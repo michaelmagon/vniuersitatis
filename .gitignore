@@ -4,6 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+.rvmrc
 # Ignore bundler config.
 /.bundle
 
@@ -12,6 +13,11 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
 
 # Ignore uploaded files in development.
 /storage/*
