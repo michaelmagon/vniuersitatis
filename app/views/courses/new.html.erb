@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>New Course</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <%= form_for(@course, url: create_url) do |f| %>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="title">Title</label>
+            <%= f.text_field :title, autocomplete: "title", class: "form-control", placeholder: "Title" %>
+          </div>
+          <div class="col-md-8 mb-3">
+            <label for="summary">Summary</label>
+            <%= f.text_field :summary, autocomplete: "summary", class: "form-control", placeholder: "Summary" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 mb-3">
+            <label for="content">Content</label>
+            <%= f.text_field :content, autocomplete: "content", class: "form-control", placeholder: "Content" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="cover_source">Cover</label>
+            <%= f.text_field :cover_source, class: "form-control", placeholder: "https://picsum.photos/750/500" %>
+          </div>
+
+          <div class="col-md-2 mb-3">
+            <label for="student_limit">Student Limit</label>
+            <%= f.number_field :student_limit, class: "form-control", placeholder: "20" %>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="start_date">Start Date</label>
+            <%= f.date_field :start_date, class: "form-control" %>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="end_date">End Date</label>
+            <%= f.date_field :end_date, class: "form-control"%>
+          </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Create Course</button>
+      <% end %>
+    </div>
+  </div>
+</div>

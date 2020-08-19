@@ -1,0 +1,65 @@
+<section class="pb-5 header text-center">
+    <div class="container py-5">
+        <header class="py-5">
+            <h1 class="display-4">Applicants</h1> 
+        </header>
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-5">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% @course.course_students.all_pending.each_with_index do |student, count| %>
+                                        <%= render "courses/teachers_tab/applicants", student: student, count: count %>
+                                    <% end %>
+                                    <tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pb-5 header text-center">
+    <div class="container py-5">
+        <header class="py-5">
+            <h1 class="display-4">Student List</h1> 
+        </header>
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-5">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="student-list">
+                                    <% @course.course_students.all_admitted.each_with_index do |student, count| %>
+                                        <%= render "courses/teachers_tab/applicants", student: student, count: count %>
+                                    <% end %>
+                                    <tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

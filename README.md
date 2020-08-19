@@ -1,24 +1,44 @@
-# vniuersitatis
+# VNIUERSITATIS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
 
-Things you may want to cover:
+### Clone the repository
 
-* Ruby version
+```shell
+git clone https://github.com/michaelmagon/vniuersitatis.git
+cd vniuersitatis
+```
 
-* System dependencies
+### Check your Ruby version
 
-* Configuration
+```shell
+ruby -v
+```
 
-* Database creation
+The ouput should start with something like `ruby ruby 2.6.5`
 
-* Database initialization
+If not, install the right ruby version using [rvm](https://rvm.io/)
 
-* How to run the test suite
+```shell
+rvm install 2.5.1
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Install dependencies
 
-* Deployment instructions
+Using [Bundler](https://github.com/bundler/bundler)
 
-* ...
+```shell
+bundle install
+```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+
+## Serve
+
+```shell
+rails s
+```

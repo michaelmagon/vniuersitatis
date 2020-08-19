@@ -1,0 +1,14 @@
+<div class="container">
+      <h1 class="my-4">Courses</h1>
+
+      <% @courses.each do |course| %>
+        <%= render 'courses/course_tab', course: course %>
+      <% end %>
+
+
+      <div class="row pagination">    
+        <div class="col-12 mx-auto flickr_pagination">      
+          <%= will_paginate @courses %>
+        </div>
+      </div>
+</div>

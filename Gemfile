@@ -10,9 +10,13 @@ gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
+gem 'bootstrap', '~> 5.0.0.alpha1'
+gem 'popper_js'
+gem 'jquery-rails'
 gem 'sass-rails', '>= 6'
+gem "font-awesome-rails"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+# gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -25,12 +29,22 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Authentication 
+gem 'devise'
+gem 'rails_admin', '~> 2.0'
+gem 'cancancan'
+
+gem 'will_paginate', '~> 3.3'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'factory_bot'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'faker'
 end
 
 group :development do

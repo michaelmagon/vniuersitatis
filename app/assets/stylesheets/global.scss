@@ -1,0 +1,44 @@
+body {
+
+
+  a:hover{
+    background-color: none !important;
+  }
+  .badge.badge-success {
+    color: #fff;
+    background-color: #28a745;
+  }
+  .badge.badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  .pagination {
+    .flickr_pagination {
+      width: fit-content;
+      text-align: center;
+      padding: 0.3em;
+      cursor: default; 
+    }
+
+    .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+      padding: 0.2em 0.5em; 
+    }
+    .flickr_pagination .disabled {
+      color: #aaaaaa; 
+    }
+    .flickr_pagination .current {
+      font-style: normal;
+      font-weight: bold;
+      color: #0063dc; 
+    }
+    .flickr_pagination a {
+      color: #0063dc;
+      text-decoration: none; 
+    }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: #003366;
+      background: #0063dc;
+      color: white; 
+    }
+  }
+}

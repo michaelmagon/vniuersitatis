@@ -1,0 +1,18 @@
+<% @student = student.student %>
+<tr id="student-<%= @student.id %>">
+  <th scope="row"><%= count+1 %></th>
+  <td><%= @student.name.titleize %></td>
+  <td><%= @student.email%></td>
+  <% unless student.admitted? %>
+    <td>
+        <ul class="list-inline m-0">
+            <li class="list-inline-item">
+                <button class="btn btn-success btn-sm rounded-0" type="button" data-sid=<%= @student.id %> admit-student data-cid=<%= @course.slug %> title="Accept"><i class="fa fa-thumbs-o-up"></i></button>
+            </li>
+            <li class="list-inline-item">
+                <button class="btn btn-danger btn-sm rounded-0" type="button" data-sid=<%= @student.id %> decline-student data-cid=<%= @course.slug %> title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+            </li>
+        </ul>
+    </td>
+  <% end %>
+</tr>
