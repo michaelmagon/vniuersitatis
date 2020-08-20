@@ -1,4 +1,5 @@
 //= require notifications.js
+//= require courses_filter.js
 
 $(document).on('turbolinks:load', function() {
   
@@ -33,6 +34,14 @@ $(document).on('turbolinks:load', function() {
     respond_application(sid, cid, 'decline')
   });
 
+  $(".filter-btn").on('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    const filter = $(this).data('filter');
+    $(".filter-btn").removeClass('active');
+    $("[data-filter="+filter+"]").addClass('active');
+    retrieve_courses($(this).data('filter'));
+  })
 });
 
 function apply_course(slug, cuid){
@@ -44,6 +53,22 @@ function apply_course(slug, cuid){
       display_notification("Successfully applied for a spot!", "The course instructor will review your application.", "success", ".notifications");
       $("#apply-course").html('Pending');
       $("#apply-course").attr("disabled", true);
+    }
+  });
+}
+
+function retrieve_courses(filter){
+  $.ajax({
+    method: 'GET',
+    url: "/courses/?filter="+filter,
+    success: function(data)
+    {
+        $("#courses-list").empty();
+        if (data.length === 0){
+          $("#courses-list").append(empty_courses);
+        } else {
+          data.forEach(function(content) { $("#courses-list").append(course_tab(content));});
+        }
     }
   });
 }

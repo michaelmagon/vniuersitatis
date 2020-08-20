@@ -4,7 +4,7 @@
           <div class="row">
             <div class="col-lg-12">
               <h1 class="my-4">My Courses</h1>
-              <% if current_user.teacher? %><button type="button" class="btn btn-secondary btn-sm">Create New Course</button><% end %>
+              <% if current_user.teacher? %><%= link_to "Create New Course", courses_new_path, class: "btn btn-secondary btn-sm a-unstyled text-light" %><% end %>
             </div>
           </div>
         </div>

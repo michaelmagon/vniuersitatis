@@ -23,8 +23,18 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
-  config.parent_controller = 'ApplicationController' 
-  config.authorize_with :cancancan
+  # Weird issue with cancancan and rails admin
+  # config.parent_controller = 'ApplicationController' 
+  # config.authorize_with :cancancan
+
+  config.parent_controller = "::ApplicationController"
+
+  config.authorize_with do
+    if !current_user || !current_user.super_admin?
+      redirect_to(main_app.root_path, alert: "You are not permitted to view this page")
+    end
+  end
+
   config.main_app_name = Proc.new { |controller| [ "VNIUERSITATIS", "Back Office" ] }
   config.actions do
     dashboard do                  # mandatory

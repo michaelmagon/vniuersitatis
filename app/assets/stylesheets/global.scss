@@ -1,9 +1,25 @@
 body {
 
 
-  a:hover{
-    background-color: none !important;
+  $unstyledAColor: #333;
+  $unstyledAColorHover: #000;
+  $unstyledAColorInverse: #969696;
+  $unstyledAColorInverseHover: #FFF;
+  
+  .a-unstyled {
+      color: inherit;
+      &:link { color: inherit; }
+      &:visited { color: inherit; }
+      &:hover { color: $unstyledAColorHover ; background-color:transparent;}
+      &:active { color: inherit;}
   }
+  .a-primary-styled {
+    &:link { color: inherit; }
+    &:visited { color: inherit; }
+    &:hover { color: white ; background-color: #0d6efd;}
+    &:active { color: inherit;}
+}
+
   .badge.badge-success {
     color: #fff;
     background-color: #28a745;

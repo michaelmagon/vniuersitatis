@@ -1,19 +1,34 @@
 class CoursesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_data, only: [:admit, :decline]
-  load_and_authorize_resource except: :course
 
   def index
     @courses = Course.active.paginate(page: params[:page], per_page: 5) #change to available courses
   end
 
+  def filtered_courses
+    case params[:filter] # a_variable is the variable we want to compare
+    when Course::RUNNING
+      @courses = Course.running_courses
+    when Course::ENDED
+      @courses = Course.ended_courses
+    else
+      @courses = Course.upcoming_courses
+    end
+    @courses = @courses.filter_response(@courses)
+
+    render json: @courses, status: 200 and return
+  end
+
   def new
     @course = Course.new
+    authorize! :new_course, @course
   end
 
   def create_course
     @course = Course.new(course_params)
     @course.teacher = current_user
+    authorize! :create_course, @course
 
     if @course.save
       redirect_to my_courses_url
@@ -25,6 +40,8 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find_by_slug(params[:id])
     @course.dissolve
+
+    authorize! :dissolve_course, @course
     redirect_to my_courses_url
   end
 

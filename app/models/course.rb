@@ -1,6 +1,9 @@
 class Course < ApplicationRecord
   before_validation :generate_slug
 
+  RUNNING = "running"
+  ENDED = "ended"
+  UPCOMING = "upcoming"
   belongs_to :teacher, class_name: "User"
   has_many :course_students
   has_many :students, :through => :course_students
@@ -41,10 +44,39 @@ class Course < ApplicationRecord
     self.students.where(id: user.id).any?
   end
 
+  def self.upcoming_courses
+    self.active
+  end
+
+  def self.ended_courses
+    self.where(status: true).where(['end_date < ? && start_date < ?', DateTime.now, DateTime.now])
+  end
+
+  def self.running_courses
+    self.where(status: true).where(['end_date > ? && start_date < ?', DateTime.now, DateTime.now])
+  end
+
   def generate_slug
     if !self.slug || self.slug == ""
       self.slug = I18n.transliterate(self.title).downcase.gsub(/\W+/, "-")
     end
+    # set status
+    self.status = 1
+  end
+
+  def self.filter_response(result)
+    response = []
+    result.each do |c|
+      course = {
+        id: c.id,
+        title: c.title.titleize,
+        summary: c.summary,
+        teacher: c.instructor,
+        url: c.url
+      }
+      response << course
+    end
+    return response
   end
 
   def self.teacher_courses teacher_id

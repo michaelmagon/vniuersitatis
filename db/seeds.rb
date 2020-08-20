@@ -8,6 +8,7 @@
 
 user = User.new(
   :email                 => "sampleusser@user",
+  :name                  => "Admin User",
   :password              => "123456",
   :password_confirmation => "123456",
   :user_type             => "super_admn"

@@ -1,14 +1,33 @@
 <div class="container">
       <h1 class="my-4">Courses</h1>
 
-      <% @courses.each do |course| %>
-        <%= render 'courses/course_tab', course: course %>
-      <% end %>
-
-
-      <div class="row pagination">    
-        <div class="col-12 mx-auto flickr_pagination">      
-          <%= will_paginate @courses %>
+      <section>
+        <div class="row">
+          <div class="col-md-12 search-bar mb-3">
+            <ul class="nav nav-pills nav-fill">
+              <li class="nav-item border-right">
+                <a class="nav-link a-primary-styled active filter-btn" data-filter="upcoming" href="#">Upcoming Courses</a>
+              </li>
+              <li class="nav-item border-right">
+                <a class="nav-link a-primary-styled filter-btn" data-filter="ended" href="#">Ended Courses</a>
+              </li>
+              <li class="nav-item border-right">
+                <a class="nav-link a-primary-styled filter-btn" data-filter="running" href="#">Currently Running Courses</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </section>
+      <section id="courses-list">
+        <% @courses.each do |course| %>
+          <%= render 'courses/course_tab', course: course %>
+        <% end %>
+
+
+        <div class="row pagination">    
+          <div class="col-12 mx-auto flickr_pagination">      
+            <%= will_paginate @courses %>
+          </div>
+        </div>
+      </section>
 </div>

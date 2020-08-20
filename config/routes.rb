@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # Courses
   get 'courses/new', to: 'courses#new'
+  get 'courses', to: 'courses#filtered_courses'
   get 'courses/dissolve/:id', to: 'courses#destroy', as: 'dissolve'
   post 'courses/new', to: 'courses#create_course', as: 'create'
   get 'courses/list', to: 'courses#index'

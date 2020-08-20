@@ -37,14 +37,14 @@ class Ability
       can [:index, :course,:my_courses, :apply_course], Course
 
       if user.teacher?
-        can [:decline, :admit, :new, :create, :destroy], Course
+        can [:decline, :admit, :new_course, :create_course, :dissolve_course], Course
         cannot :manage, CourseStudent
       end
 
       if user.super_admin? 
+        can :read, :dashboard
         can :manage, :all
         can :access, :rails_admin 
-        can :read, :dashboard
       end
     end
   end
