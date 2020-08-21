@@ -42,3 +42,23 @@ rails db:create db:migrate db:seed
 ```shell
 rails s
 ```
+
+## Running Rspec Tests
+
+```shell
+rspec
+```
+
+## Running Cucumber Selenium Tests
+
+Run server in test environment
+
+```shell
+rails s -e test
+```
+
+In a separate terminal
+
+```shell
+cucumber
+```
