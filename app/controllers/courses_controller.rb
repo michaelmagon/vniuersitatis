@@ -63,12 +63,12 @@ class CoursesController < ApplicationController
   def apply_course
     @course = Course.find_by_slug(params[:course_id])
     @user = User.find(params[:user_id])
-    @application = CourseStudent.apply(@course,@user)
 
-    if @application.save
+    if @user.is_eligible?
+      @application =  CourseStudent.create(course: course, student: @user)
       render json: @application, status: 200 and return
     else
-      render json: @application.errors, status: 500 and return
+      render json: "You have exceeded this months quota", status: 500 and return
     end
   end
 

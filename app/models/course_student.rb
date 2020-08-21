@@ -13,9 +13,7 @@ class CourseStudent < ApplicationRecord
     self.where(status: :admitted)
   end
 
-  def self.apply course, student
-    if student.is_eligible?
-      return CourseStudent.new(course: course, student: student)
-    end
+  def self.all_active
+    self.where.not(status: [:declined, :cancelled])
   end
 end

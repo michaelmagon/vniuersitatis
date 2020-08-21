@@ -53,6 +53,10 @@ function apply_course(slug, cuid){
       display_notification("Successfully applied for a spot!", "The course instructor will review your application.", "success", ".notifications");
       $("#apply-course").html('Pending');
       $("#apply-course").attr("disabled", true);
+    },
+    error: function(data){
+      console.log(data)
+      display_notification("Failed to apply!", data.responseText, "danger", ".notifications");
     }
   });
 }
