@@ -46,7 +46,7 @@ rails s
 ## Running Rspec Tests
 
 ```shell
-rspec
+rspec spec
 ```
 
 ## Running Cucumber Selenium Tests
