@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   enum user_type: { student: 'student', teacher: 'teacher', super_admin: 'super_admn' }
 
-  has_many :course_students, foreign_key: :student_id
+  has_many :course_students, foreign_key: :student_id,  dependent: :destroy 
+  has_many :taught_courses, class_name: "Course", foreign_key: "teacher_id",  dependent: :destroy 
   has_many :courses, :through => :course_students
   
 

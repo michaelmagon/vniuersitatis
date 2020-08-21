@@ -5,7 +5,7 @@ class Course < ApplicationRecord
   ENDED = "ended"
   UPCOMING = "upcoming"
   belongs_to :teacher, class_name: "User"
-  has_many :course_students
+  has_many :course_students,  dependent: :destroy 
   has_many :students, :through => :course_students
 
   enum status: { active: 1, inactive: 0}

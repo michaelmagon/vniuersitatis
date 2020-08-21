@@ -1,6 +1,6 @@
 function course_tab(content) {
   const course_contents =
-      `<div class="row">
+      `<div class="row course_tab">
       <div class="col-md-7">
         <a href="`+content.url+`">
           <img class="img-fluid rounded mb-3 mb-md-0" src="https://picsum.photos/750/300" alt="">
@@ -10,7 +10,7 @@ function course_tab(content) {
         <h3>`+content.title+`</h3>
         <h4>`+content.teacher+`</h4>
         <p>`+content.summary+`</p>
-        <a class="btn btn-primary" href="`+content.url+`">View Course</a>
+        <a class="btn btn-primary view_course" href="`+content.url+`">View Course</a>
       </div>
     </div>
     <hr>`
