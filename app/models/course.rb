@@ -4,6 +4,8 @@ class Course < ApplicationRecord
   RUNNING = "running"
   ENDED = "ended"
   UPCOMING = "upcoming"
+  COURSE_TYPES = [RUNNING, ENDED, UPCOMING]
+  
   belongs_to :teacher, class_name: "User"
   has_many :course_students,  dependent: :destroy 
   has_many :students, :through => :course_students
@@ -16,6 +18,7 @@ class Course < ApplicationRecord
   validates :content, presence: true
 
   scope :by_teacher, -> (teacher_id) { where(teacher_id: teacher_id)}
+  scope :running, -> {where(['end_date > ? && start_date < ?', DateTime.now, DateTime.now])}
 
   def instructor
     self.teacher.name.titleize
