@@ -50,6 +50,11 @@ Then(/^I should be redirected to Course lists$/) do
   expect(current_url).to eq('http://localhost:3000/courses/list')    
 end
 
+Then(/^I should be redirected to Home Screen$/) do
+  current_url = driver.current_url
+  expect(current_url).to eq(base_url)    
+end
+
 Then(/^I should be redirected to Course$/) do
   current_url = driver.current_url
   expect(current_url).to start_with('http://localhost:3000/course')    
@@ -63,6 +68,11 @@ end
 Then(/^I should see courses$/) do  
   courses = driver.find_elements(:class, 'course_tab').length
   expect(courses).to be > 0
+end
+
+Then(/^I should not see courses$/) do  
+  courses = driver.find_elements(:class, 'course_tab').length
+  expect(courses).to be < 0
 end
 
 Then(/^I should be notified$/) do  
