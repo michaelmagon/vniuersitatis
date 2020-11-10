@@ -6,9 +6,13 @@ class User < ApplicationRecord
 
   enum user_type: { student: 'student', teacher: 'teacher', super_admin: 'super_admn' }
 
+  mount_uploader :avatar, ImageUploader
+
   has_many :course_students, foreign_key: :student_id,  dependent: :destroy 
   has_many :taught_courses, class_name: "Course", foreign_key: "teacher_id",  dependent: :destroy 
   has_many :courses, :through => :course_students
+  has_many :group_users,  dependent: :destroy 
+  has_many :groups, :through => :group_users
   
 
   validates :name, presence: true

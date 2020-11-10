@@ -31,8 +31,15 @@ gem 'jbuilder', '~> 2.7'
 
 # Authentication 
 gem 'devise'
-gem 'rails_admin', '~> 2.0'
+# gem 'rails_admin', '~> 2.0'
 gem 'cancancan'
+gem 'activeadmin'
+
+# Uploader
+gem 'carrierwave', '~> 2.0'
+# Upload to S3
+gem 'fog-aws'
+
 
 gem 'will_paginate', '~> 3.3'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.2'

@@ -13,4 +13,4 @@ user = User.new(
   :password_confirmation => "123456",
   :user_type             => "super_admn"
 )
-user.save!
+user.save!AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

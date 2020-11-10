@@ -4,6 +4,9 @@ class Course < ApplicationRecord
   RUNNING = "running"
   ENDED = "ended"
   UPCOMING = "upcoming"
+
+  mount_uploader :cover_source, ImageUploader
+
   belongs_to :teacher, class_name: "User"
   has_many :course_students,  dependent: :destroy 
   has_many :students, :through => :course_students
