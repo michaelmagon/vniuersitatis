@@ -93,6 +93,6 @@ private
   end
 
   def course_params
-    params.require(:course).permit(:title, :summary, :content, :cover_source, :student_limit, :start_date, :end_date)
+    params.require(:course).permit(:title, :summary, :content, :cover_source, :student_limit, :start_date, :end_date, :tag_ids)
   end
 end
