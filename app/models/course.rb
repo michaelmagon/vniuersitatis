@@ -59,6 +59,10 @@ class Course < ApplicationRecord
     self.where(status: true).where(['end_date > ? && start_date < ?', DateTime.now, DateTime.now])
   end
 
+  def image_cover
+    self.cover_source ? self.cover_source : "https://picsum.photos/750/300"
+  end
+
   def generate_slug
     if !self.slug || self.slug == ""
       self.slug = I18n.transliterate(self.title).downcase.gsub(/\W+/, "-")
