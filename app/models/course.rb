@@ -10,6 +10,7 @@ class Course < ApplicationRecord
   belongs_to :teacher, class_name: "User"
   has_many :course_students,  dependent: :destroy 
   has_many :students, :through => :course_students
+  has_many :tags
 
   enum status: { active: 1, inactive: 0}
 
