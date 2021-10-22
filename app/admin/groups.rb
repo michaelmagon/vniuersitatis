@@ -15,6 +15,7 @@ ActiveAdmin.register Group do
     f.inputs do
       f.input :name
       f.input :description
+      f.input :cover_image
     end
     f.actions
   end
