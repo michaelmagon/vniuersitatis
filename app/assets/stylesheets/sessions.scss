@@ -28,5 +28,21 @@ body.sessions {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+}
 
+body.registrations.new {
+  .registration-form {
+    width: 50%;
+    margin: 0 auto;
+
+    input {
+      width: 100%;
+    }
+
+    .btn-primary {
+      border-color: #f0f0f0;
+      background-image: unset;
+      background-color: #343a40;
+    }
+  }
 }
