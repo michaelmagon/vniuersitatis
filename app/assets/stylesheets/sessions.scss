@@ -7,6 +7,9 @@ body.sessions {
   }
   .form-signin .checkbox {
     font-weight: 400;
+    label {
+      font-size: 11px;
+    }
   }
   .form-signin .form-control {
     position: relative;
@@ -22,23 +25,22 @@ body.sessions {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    width: 100%;
   }
   .form-signin input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    width: 100%;
   }
 }
-
 body.registrations.new {
   .registration-form {
     width: 50%;
     margin: 0 auto;
-
     input {
       width: 100%;
     }
-
     .btn-primary {
       border-color: #f0f0f0;
       background-image: unset;
