@@ -16,4 +16,8 @@ class CourseStudent < ApplicationRecord
   def self.all_active
     self.where.not(status: [:declined, :cancelled])
   end
+  
+  def self.all_declined
+    self.where(status: :declined)
+  end
 end

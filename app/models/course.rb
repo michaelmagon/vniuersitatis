@@ -10,6 +10,7 @@ class Course < ApplicationRecord
   belongs_to :teacher, class_name: "User"
   has_many :course_students,  dependent: :destroy 
   has_many :students, :through => :course_students
+  has_many :tags
 
   enum status: { active: 1, inactive: 0}
 
@@ -57,6 +58,10 @@ class Course < ApplicationRecord
 
   def self.running_courses
     self.where(status: true).where(['end_date > ? && start_date < ?', DateTime.now, DateTime.now])
+  end
+
+  def image_cover
+    self.cover_source ? self.cover_source : "https://picsum.photos/750/300"
   end
 
   def generate_slug

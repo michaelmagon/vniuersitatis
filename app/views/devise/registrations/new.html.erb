@@ -2,50 +2,56 @@
   <div class="py-5 text-center">
     <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h2>Register</h2>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu bibendum tellus. Aliquam erat volutpat.</p>
+    <p class="lead">Explore opportunities! Create an account now!</p>
   </div>
-
-  <div class="row">
-    <div class="col-md-12 order-md-1">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="row">
-          <div class="col-md-4 mb-3">
-            <label for="email">Email</label>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "you@example.com" %>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="firstName">Name</label>
-            <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Name" %>
-          </div>
-          <div class="col-md-4 mb-3">
-            <div class="form-group">
-              <label for="user_user_type">I am a</label>
-              <select class="form-control" name="user[user_type]" id="user_user_type">
-                <option value='student'>Student</option>
-                <option value='teacher'>Teacher</option>
-              </select>
+  <div class='registration-form'>
+    <div class="row">
+      <div class="col-md-12 order-md-1">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="email">Email</label>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "you@example.com" %>
             </div>
           </div>
-        </div>
-
-        <hr class="mb-4">
-
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Password</label>
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="firstName">Name</label>
+              <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Name" %>
+            </div>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Confirm Password</label>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation" %>
+          <div class="row">
+            <div class="col mb-3">
+              <div class="form-group">
+                <label for="user_user_type">I am a</label>
+                <select class="form-control" name="user[user_type]" id="user_user_type">
+                  <option value='student'>Student</option>
+                  <option value='teacher'>Teacher</option>
+                </select>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Create Account</button>
-        <%= link_to "Back to Log in", new_session_path(resource_name), class: "btn btn-secondary btn-lg btn-block" %>
-      <% end %>
+          <hr class="mb-4">
+
+          <div class="row">
+            <div class="col mb-3">
+              <label for="lastName">Password</label>
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="lastName">Confirm Password</label>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation" %>
+            </div>
+          </div>
+
+          <hr class="mb-4">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Create Account</button>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
