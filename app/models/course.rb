@@ -21,6 +21,7 @@ class Course < ApplicationRecord
 
   scope :by_teacher, -> (teacher_id) { where(teacher_id: teacher_id)}
   scope :active, -> { where(status: true).where(['start_date > ?', DateTime.now]) }
+  scope :by_tag, ->(tag) { join(:tags).where(tags: {name: tag}) }
 
   def course_palette
     tags.map{|t| t.color }    
