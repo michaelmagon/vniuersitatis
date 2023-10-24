@@ -28,4 +28,16 @@ class User < ApplicationRecord
   def is_eligible?
     self.course_students.where("created_at >= ? AND created_at<= ?", Date.today.at_beginning_of_month, Date.today.at_end_of_month).count < COURSE_MONTHLY_LIMIT
   end
+
+  def parsed_name
+    name.split()
+  end
+
+  def first_name
+    parsed_name.first
+  end
+
+  def last_name
+    parsed_name.last
+  end
 end
