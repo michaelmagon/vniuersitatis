@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_10_22_175120) do
 
-  create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "admin_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "course_students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "course_students", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "course_id"
     t.string "status", limit: 15, default: "pending"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.index ["student_id"], name: "index_course_students_on_student_id"
   end
 
-  create_table "courses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "courses", force: :cascade do |t|
     t.string "title", limit: 50
     t.text "content"
     t.string "summary", limit: 200
@@ -64,7 +67,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.index ["teacher_id"], name: "index_courses_on_teacher_id"
   end
 
-  create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "group_users", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
@@ -73,7 +76,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string "name", limit: 50
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
@@ -81,7 +84,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.string "cover_image"
   end
 
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
     t.string "color"
     t.datetime "created_at", precision: 6, null: false
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_175120) do
     t.integer "course_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
