@@ -1,4 +1,4 @@
-# RailsAdmin.config do |config|
+RailsAdmin.config do |config|
 
 #   ### Popular gems integration
 
@@ -78,19 +78,29 @@
 #     end
 #   end
 
-#   config.model 'User' do
-#     object_label_method do
-#       :user_email_id
-#     end
+  config.model 'Tags' do
+    object_label_method do
+      :course_color
+    end
 
-#     edit do
-#       include_all_fields
-#       field :user_type, :enum do
-#         enum do
-#           User.user_types
-#         end
-#       end
-#       exclude_fields :password, :password_confirmation, :created_at, :update_at
-#     end
-#   end
-# end
+    edit do
+      include_all_fields
+    end
+  end
+
+  config.model 'User' do
+    object_label_method do
+      :user_email_id
+    end
+
+    edit do
+      include_all_fields
+      field :user_type, :enum do
+        enum do
+          User.user_types
+        end
+      end
+      exclude_fields :password, :password_confirmation, :created_at, :update_at
+    end
+  end
+end
