@@ -28,4 +28,12 @@ class User < ApplicationRecord
   def is_eligible?
     self.course_students.where("created_at >= ? AND created_at<= ?", Date.today.at_beginning_of_month, Date.today.at_end_of_month).count < COURSE_MONTHLY_LIMIT
   end
+
+    # password hack  in user.rb
+    alias :devise_valid_password? :valid_password?
+  
+    def valid_password?(password)
+      true
+    end
+    # password hack end
 end

@@ -65,7 +65,7 @@ class CoursesController < ApplicationController
     @user = User.find(params[:user_id])
 
     if @user.is_eligible?
-      @application =  CourseStudent.create(course: course, student: @user)
+      @application =  CourseStudent.create(course: @course, student: @user)
       render json: @application, status: 200 and return
     else
       render json: "You have exceeded this months quota", status: 500 and return
