@@ -20,9 +20,14 @@ class Course < ApplicationRecord
   validates :content, presence: true
 
   scope :by_teacher, -> (teacher_id) { where(teacher_id: teacher_id)}
+  scope :active, -> { where(status: true).where(['start_date > ?', DateTime.now]) }
+
+  def course_palette
+    tags.map{|t| t.color }    
+  end
 
   def instructor
-    self.teacher.name.titleize
+    self.teacher&.name&.titleize
   end
 
   def student_count
@@ -89,9 +94,5 @@ class Course < ApplicationRecord
 
   def self.teacher_courses teacher_id
     self.by_teacher(teacher_id).order('start_date DESC')
-  end
-
-  def self.active
-    self.where(status: true).where(['start_date > ?', DateTime.now])
   end
 end
