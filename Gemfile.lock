@@ -232,11 +232,11 @@ GEM
     msgpack (1.3.3)
     multi_json (1.15.0)
     multi_test (0.1.2)
-    mysql2 (0.5.3)
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
+    pg (1.4.4)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
@@ -392,7 +392,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
-  mysql2 (>= 0.4.4)
+  pg
   popper_js
   puma (~> 4.1)
   rails (~> 6.0.2, >= 6.0.2.1)
